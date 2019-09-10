@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zaposleni!
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ include('/components/error.html.twig') }}
+
+        {{ include('/components/table.html.twig',{'table':dataTable}) }}
+    </div>
+{% endblock %}

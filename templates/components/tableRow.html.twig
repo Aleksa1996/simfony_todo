@@ -1,0 +1,25 @@
+{% for tRow in table.tRows %}
+    <tr>
+        {% for key,tHead in table.tHeads %}
+            <td scope="row">
+                {% if attribute(tRow,key) is iterable %}
+                    {{ attribute(tRow,key)|join(', ') }}
+                {% else %}
+                    {{ attribute(tRow,key) }}
+                {% endif %}
+            </td>
+        {% endfor %}
+        <td>
+            <a href="{{ path(table.action ~ '_save', {'id': tRow.id}) }}" class="btn btn-warning">
+                Izmeni
+            </a>
+
+            <form class="d-inline" action="{{ path(table.action ~ '_destroy', {'id': tRow.id}) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <button type="submit" class="btn btn-danger">
+                    Obrisi
+                </button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}

@@ -1,0 +1,7 @@
+{% if app.session.flashbag.peek('error') is not empty %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
